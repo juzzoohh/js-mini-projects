@@ -1,83 +1,57 @@
-// JavaScript Built-in Functions Reference
-alert("Ini adalah sebuah alert ");
+// Function
 
-let str = "JavaScript";
-console.log(str.charAt(4));
+console.log(perpangkatan()); // akan terjadi error
+console.log(sayHello()); // tidak error
 
-// Control Flow
-
-let yourName = String(prompt("Hai, tolong tulis namamu dibawah ini yaa"));
-alert(`Halo ${yourName} Selamat datang di website saya yaa`);
-
-Conditional Execution
-let yourYearOfBirth = Number(prompt("tuliskan berapa tahun kelahiran kamu? (yyyy)"))
-if (2025 - yourYearOfBirth < 17){
-  alert("Kamu belum cukup umur, silahkan keluar dari website ini");
-} else if (2025 - yourYearOfBirth >= 17 && 2025 - yourYearOfBirth <= 40){
-  alert("Selamat, kamu sudah dewasa dan cukup umur untuk mengakses website ini")
-} else {
-  alert("batas umur input hanya 40 tahun")
+// Function Definition
+const perpangkatan = function(n){
+  return n * n;
 }
 
-// Ternary Operator
-? = jika memenuhi maka
-: = jika tidak terpenuhi maka
-
-// if else method
-let yourYearOfBirth = Number(prompt("tuliskan berapa tahun kelahiran kamu? (yyyy)"))
-if (2025 - yourYearOfBirth < 17){
-  alert("Kamu belum cukup umur, silahkan keluar dari website ini");
-} else {
-  alert("kamu diizinkan")
+// Function Declaration 
+function perpangkatan(n){
+  return n * n;
 }
-// Ternary Method
-2025 - yourYearOfBirth < 17 ? alert("Kamu belum cukup umur, silahkan keluar dari website ini") : alert("kamu diizinkan");
+console.log(perpangkatan(2));
 
-
-// Swict Case
-
-let cuacaHariIni = prompt("Tolong tuliskan cuaca hari ini (hujan/cerah/mendung)");
-
-switch (cuacaHariIni) {
-  case "mendung":
-    alert("Lebih baik kamu segera cari tempat teduh");
-    break;
-  case "hujan":
-    alert("berteduh sejenak saja untuk menghindari hujan");
-    break;
-  case "cerah":
-    alert("Silahkan lanjutkan aktifitas jika diluar ruangan");
-    break;
-  default:
-    alert("Tolong input dengan pilihan (hujan/cerah/mendung)");
+// ES6 Arrow Function
+const perpangkatan = (n) => {
+  return n * n;
 }
 
-// Looping
-let count = 0;
+// versi singkat nya, sama saja waw (tapi tidak disarankan ketika kerja tim)
+const perpangkatan = n => n * n;
 
-while = dicek dahulu apakah terpenuhi atau tidak. jika tidak maka tidak dilakukan
-while (count <= 12){
-  console.log(count);
+// Function side-effect
+function sayHello(){
+  alert("Hello"); 
 
-  count = count + 2;
+  return 0; 
 }
 
-do while = melakukan dahulu, baru di cek apakah terpenuhi atau tidak, jika terpenuhi maka lanjut
-do {
-    console.log(count);
+// Default Value di dalam Function
+function perpangkatan(n){
+  if (n == undefined){
+    return 2*2;
+  }
 
-    count = count + 2;
-} while(count <= 12)
-
-// For Loop
-
-for (let i = 0; i <= 100; i = i +2) {
-  console.log(i)
+  return n*n // ini tidak akan dijalankan jika kondisi IF terpenuhi
 }
 
-for (let i = "*"; i.length <= 10; i= i+ "*") {
-  console.log(i)
+// Atau bisa juga seperti ini 
+function perpangkatan(n = 2){ // defaulnya adalah 2
+  return n*n 
 }
-const projectTitle = document.querySelector("#project-title");
+console.log(perpangkatan())
 
-projectTitle.textContent = "Title baru dari JS File"
+// Diubah ke bentuk function ES6
+const changeProjectHeadingTitle = (title) => {
+  const projectTitle = document.querySelector("#project-title");
+  if (typeof title === "string"){ // menegaskan tipe data nya
+    projectTitle.textContent = title;
+  } else {
+    console.error("Argumen kamu bukan tipe data 'string'")
+  }
+}
+
+changeProjectHeadingTitle("Javascript is cool!")
